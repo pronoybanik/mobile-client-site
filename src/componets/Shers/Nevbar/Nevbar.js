@@ -1,12 +1,36 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
+import { authContext } from '../../AuthProvider/AuthProvider';
+import PrimaryButton from '../../Buttons/PrimaryButton';
 
 const Nevbar = () => {
 
+    const { user, logOut } = useContext(authContext)
+
+    const handleLogin = () => {
+        logOut()
+            .then()
+            .catch()
+    }
+
     const menu = <>
         <Link className='btn btn-ghost font-sans btn-sm ' to="/">Home</Link>
-        <Link className='btn btn-ghost font-serif btn-sm ' to="/register">singUp</Link>
-        <Link className='btn btn-ghost font-serif btn-sm ' to="/login">LogIn</Link>
+        <Link className='btn btn-ghost font-sans btn-sm ' to="/blog">Blog</Link>
+
+        {/* <p>{user.name}</p> */}
+
+        {
+            user?.uid ?
+                <div onClick={handleLogin}>
+                    <PrimaryButton  classes='btn btn-ghost font-serif btn-sm w-full'>log Out</PrimaryButton>
+                </div>
+                :
+                <>
+                    <Link className='btn btn-ghost font-serif btn-sm ' to="/register">singUp</Link>
+                    <Link className='btn btn-ghost font-serif btn-sm ' to="/login">LogIn</Link>
+                </>
+
+        }
     </>
 
     return (

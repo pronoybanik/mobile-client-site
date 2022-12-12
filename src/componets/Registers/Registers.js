@@ -1,8 +1,10 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
+import { authContext } from '../AuthProvider/AuthProvider';
 import PrimaryButton from '../Buttons/PrimaryButton';
 
 const Registers = () => {
+    const { user, createUser, updateUser } = useContext(authContext)
 
     const handleRegister = event => {
         event.preventDefault()
@@ -10,11 +12,30 @@ const Registers = () => {
         const from = event.target
         const userName = from.name.value;
         const userEmail = from.email.value;
-        const setRole = from.role.value;
         const password = from.password.value;
+        const setRole = from.role.value;
 
         console.log(userName, userEmail, setRole, password);
-       
+        createUser(userEmail, password)
+            .then(result => {
+                const user = result.user
+                console.log(user);
+                alert('sign success')
+                const userInfo = {
+                    displayName: userName
+                }
+                updateUser(userInfo)
+                    .then(result => {
+                        const user = result.user
+                        console.log(user);
+                    })
+                    .catch(err => console.log(err))
+            })
+            .catch(error => {
+                console.error(error)
+            })
+
+
     }
     return (
         <div>

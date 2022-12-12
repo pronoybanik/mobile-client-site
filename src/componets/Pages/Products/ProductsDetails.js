@@ -12,7 +12,7 @@ const ProductsDetails = () => {
 
     return (
         <div>
-            <h1>details:{data.length}</h1>
+            <h1 className='text-3xl text-center my-8 font-bold text-green-500'>This Mobile will be sold</h1>
 
 
             <div className="card w-f  my-20 shadow-xl">
