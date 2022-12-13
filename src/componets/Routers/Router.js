@@ -1,4 +1,6 @@
 import { createBrowserRouter } from "react-router-dom";
+import DashBoardLayer from "../DashBoard/DashBoardLayer";
+import MyOrders from "../DashBoard/MyOrders";
 import Login from "../Login/Login";
 import Blog from "../Pages/Blog/Blog";
 import Home from "../Pages/Homes/Home";
@@ -46,7 +48,18 @@ const router = createBrowserRouter([
             }
         ]
 
+    },
+    {
+        path: '/dashboard',
+        element: <DashBoardLayer></DashBoardLayer>,
+        children:[
+            {
+                path: '/dashboard',
+                element: <MyOrders></MyOrders>
+            }
+        ]
     }
+
 ])
 
 export default router;
