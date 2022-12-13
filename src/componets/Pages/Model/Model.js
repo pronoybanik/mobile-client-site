@@ -1,10 +1,12 @@
 import React, { useContext } from 'react';
+import { toast } from 'react-hot-toast';
+import { useNavigate } from 'react-router-dom';
 import { authContext } from '../../AuthProvider/AuthProvider';
 
-const Model = ({ mobileProps }) => {
+const Model = ({ mobileProps, setMobileBooking }) => {
     const { user } = useContext(authContext);
 
-    // const navigate = navigator();
+    const navigate = useNavigate();
 
     const { title, price, image_url, _id } = mobileProps;
     console.log(title);
@@ -29,6 +31,27 @@ const Model = ({ mobileProps }) => {
         }
 
         console.log(list);
+
+        fetch('http://localhost:5000/booking', {
+            method: 'POST',
+            headers: {
+                'content-type': 'application/json',
+            },
+            body: JSON.stringify(list)
+        })
+            .then(res => res.json())
+            .then(data => {
+                console.log(data);
+                setMobileBooking(null)
+                if (data.insertedId) {
+                    toast.success('booking successful')
+                }
+                navigate("/dashboard")
+            })
+
+
+
+
 
     }
 

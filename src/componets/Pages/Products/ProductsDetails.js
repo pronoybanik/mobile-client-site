@@ -52,6 +52,7 @@ const ProductsDetails = () => {
             {
                 <Model
                     mobileProps={mobileBooking}
+                    setMobileBooking={setMobileBooking}
                 ></Model>
             }
         </div>

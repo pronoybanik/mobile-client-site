@@ -1,4 +1,5 @@
 import React from 'react';
+import EmailFiled from '../EmailFiled/EmailFiled';
 import Headers from '../Headers/Headers';
 import Services from '../Services/Services';
 
@@ -7,6 +8,7 @@ const Home = () => {
         <div>
             <Headers></Headers>
             <Services></Services>
+            <EmailFiled></EmailFiled>
         </div>
     );
 };
