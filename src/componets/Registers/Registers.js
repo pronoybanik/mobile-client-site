@@ -1,10 +1,25 @@
+import { GoogleAuthProvider } from 'firebase/auth';
 import React, { useContext } from 'react';
+import { toast } from 'react-hot-toast';
 import { Link } from 'react-router-dom';
 import { authContext } from '../AuthProvider/AuthProvider';
 import PrimaryButton from '../Buttons/PrimaryButton';
 
 const Registers = () => {
-    const { user, createUser, updateUser } = useContext(authContext)
+    const { createUser, updateUser, googleLogin } = useContext(authContext)
+
+    const provider = new GoogleAuthProvider()
+
+    const handleGoogle = () => {
+        googleLogin(provider)
+            .then(result => {
+                const user = result.user;
+                console.log(user);
+                toast.success('Google Register Done')
+            })
+            .catch(error => console.log(error))
+    }
+
 
     const handleRegister = event => {
         event.preventDefault()
@@ -20,7 +35,8 @@ const Registers = () => {
             .then(result => {
                 const user = result.user
                 console.log(user);
-                alert('sign success')
+                toast.success('sign success')
+                from.reset('')
                 const userInfo = {
                     displayName: userName
                 }
@@ -33,6 +49,7 @@ const Registers = () => {
             })
             .catch(error => {
                 console.error(error)
+                // toast.error('password is Incorrect')
             })
 
 
@@ -41,7 +58,7 @@ const Registers = () => {
         <div>
             <div className="text-2xl">register</div>
 
-            <div className="hero ">
+            <div className="hero font-serif">
                 <div className="hero-content ">
 
                     <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
@@ -75,7 +92,7 @@ const Registers = () => {
                                 <label className="label">
                                     <span className="label-text">Password</span>
                                 </label>
-                                <input name='password' type="text" placeholder="password" className="input input-bordered" />
+                                <input name='password' type="password" placeholder="password" className="input input-bordered" />
                                 <label className="label">
                                     <p>I Have a Account- <Link to='/login' className='text-sky-400 font-semibold'>Login Now</Link></p>
                                 </label>
@@ -84,6 +101,10 @@ const Registers = () => {
                                 {/* <PrimaryButton classes="btn broder-none w-full">SingUp</PrimaryButton> */}
                                 <button className="btn text-white">SingUp</button>
                             </div>
+
+                            <div className='divider'>OR</div>
+                            <button onClick={handleGoogle} className='btn btn-outline'>Google</button>
+
                         </form>
                     </div>
                 </div>

@@ -1,13 +1,10 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { useLoaderData } from 'react-router-dom';
 import AllProducts from './AllProducts';
 
 const Products = () => {
-    const data = useLoaderData()
-    console.log(data);
-    
-    // const [products, setPorducts] = useState(data)
 
+    const data = useLoaderData()
 
     return (
         <div>
@@ -19,7 +16,7 @@ const Products = () => {
                 ></AllProducts>)
             }
 
-            
+
         </div>
     );
 };

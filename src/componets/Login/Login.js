@@ -1,14 +1,32 @@
+import { GoogleAuthProvider } from 'firebase/auth';
 import React, { useContext } from 'react';
+import { toast } from 'react-hot-toast';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { authContext } from '../AuthProvider/AuthProvider';
 
 const Login = () => {
-    const { signUser } = useContext(authContext)
+    const { signUser, googleLogin } = useContext(authContext)
 
     const location = useLocation();
     const navigate = useNavigate();
 
     const list = location.state?.from?.pathname || '/';
+
+    const provider = new GoogleAuthProvider()
+    const handleGoogle = () => {
+        googleLogin(provider)
+            .then(result => {
+                const user = result.user;
+                console.log(user);
+                toast.success('Google Login successful')
+                navigate(list, { replace: true });
+
+            })
+            .catch(error=> {
+                console.error(error) 
+                toast.error('Password is Incorrect')
+            })
+    }
 
     const handleLogin = event => {
         event.preventDefault()
@@ -21,42 +39,49 @@ const Login = () => {
             .then(result => {
                 const user = result.user
                 console.log(user);
-                alert('login success');
+                from.reset('');
+                toast.success('login success');
                 navigate(list, { replace: true });
             })
             .catch(error => {
-                console.error(error)
+                console.error(error);
+                // toast.error('Password is incorrect')
             })
 
     }
 
     return (
         <div>
-            <h1 className='text-2xl'> Login </h1>
+            <h1 className='text-2xl '> Login </h1>
             <div className="hero ">
                 <div className="hero-content ">
                     <form onSubmit={handleLogin} className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
-                        <h1 className="text-4xl font-bold text-center mt-2">Login Now</h1>
+                        <h1 className="text-4xl font-bold text-center mt-2 font-serif">Login Now</h1>
                         <div className="card-body w-96">
 
                             <div className="form-control">
                                 <label className="label">
-                                    <span className="label-text">Email</span>
+                                    <span className="label-text font-serif">Email</span>
                                 </label>
-                                <input name='email' type="text" placeholder="email" className="input input-bordered" />
+                                <input name='email' type="text" placeholder="email" className="input input-bordered " />
                             </div>
                             <div className="form-control">
                                 <label className="label">
-                                    <span className="label-text">Password</span>
+                                    <span className="label-text font-serif">Password</span>
                                 </label>
                                 <input name='password' type="text" placeholder="password" className="input input-bordered" />
                                 <label className="label">
-                                    <Link href="#" className="label-text-alt link link-hover">Forgot password?</Link>
+                                    <Link href="#" className="label-text-alt link link-hover font-serif">Forgot password?</Link>
                                 </label>
                             </div>
                             <div className="form-control mt-6">
-                                <button className="btn ">Login</button>
+                                <button className="btn font-serif">Login</button>
                             </div>
+
+                             {/* Google login system */}
+
+                            <div className='divider font-serif'>OR</div>
+                            <button onClick={handleGoogle} className='btn btn-outline font-serif'>Google</button>
                         </div>
                     </form>
                 </div>
