@@ -9,7 +9,7 @@ const Headers = () => {
                 <div className="hero-content text-center text-neutral-content">
                     <div className="max-w-md">
                         <h1 className="mb-5 text-4xl font-bold text-white font-serif">Big and Bigger Phone Are Thar</h1>
-                        <p className="mb-5  font-serif">Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda excepturi exercitationem quasi. In deleniti eaque aut repudiandae et a id nisi.</p>
+                        <p className="mb-5  font-serif">Provident cupiditate voluptatem et in. Quaerat fugiat the assumenda excepturi exercitationem quasi. In deleniti eaque aut repudiandae et a id nisi.</p>
                     </div>
                 </div>
             </div>
