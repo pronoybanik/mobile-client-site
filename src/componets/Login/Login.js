@@ -1,16 +1,25 @@
 import { GoogleAuthProvider } from 'firebase/auth';
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { toast } from 'react-hot-toast';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { authContext } from '../AuthProvider/AuthProvider';
+import useToken from '../Hookes/UseToken';
 
 const Login = () => {
     const { signUser, googleLogin } = useContext(authContext)
 
     const location = useLocation();
     const navigate = useNavigate();
+    const form = location.state?.from?.pathname || '/';
 
-    const list = location.state?.from?.pathname || '/';
+    const [loginError, setLoginError] = useState('');
+    const [loginUserEmail, setLoginUserEmail] = useState('')
+    const [token] = useToken(loginUserEmail)
+
+    if (token) {
+        navigate(form, { replace: true })
+    }
+
 
     const provider = new GoogleAuthProvider()
     const handleGoogle = () => {
@@ -19,10 +28,12 @@ const Login = () => {
                 const user = result.user;
                 console.log(user);
                 toast.success('Google Login successful')
-                navigate(list, { replace: true });
+
+                // navigate(list, { replace: true });
+
 
             })
-            .catch(error=> {
+            .catch(error => {
                 console.error(error) 
                 toast.error('Password is Incorrect')
             })
@@ -37,15 +48,16 @@ const Login = () => {
         console.log(email, password);
         signUser(email, password)
             .then(result => {
-                const user = result.user
+                const user = result.user;
                 console.log(user);
+                setLoginUserEmail(email)
                 from.reset('');
                 toast.success('login success');
-                navigate(list, { replace: true });
+
             })
             .catch(error => {
-                console.error(error);
-                // toast.error('Password is incorrect')
+                console.error(error.message);
+                setLoginError(error.message);
             })
 
     }
@@ -69,16 +81,15 @@ const Login = () => {
                                 <label className="label">
                                     <span className="label-text font-serif">Password</span>
                                 </label>
-                                <input name='password' type="text" placeholder="password" className="input input-bordered" />
+                                <input name='password' type="password" placeholder="password" className="input input-bordered" />
                                 <label className="label">
                                     <Link href="#" className="label-text-alt link link-hover font-serif">Forgot password?</Link>
                                 </label>
                             </div>
+                            <p className=''>{loginError}</p>
                             <div className="form-control mt-6">
                                 <button className="btn font-serif">Login</button>
                             </div>
-
-                             {/* Google login system */}
 
                             <div className='divider font-serif'>OR</div>
                             <button onClick={handleGoogle} className='btn btn-outline font-serif'>Google</button>

@@ -1,17 +1,38 @@
 import { useQuery } from '@tanstack/react-query';
-import React from 'react';
+import React, { useContext } from 'react';
 import { toast } from 'react-hot-toast';
+import { authContext } from '../AuthProvider/AuthProvider';
+import Loading from '../Loader/Loading';
 
 const MyOrders = () => {
+    const { user } = useContext(authContext)
 
-    const { data: products , refetch} = useQuery({
-        queryKey: ['orders'],
-        queryFn: () => fetch('http://localhost:5000/booking')
-            .then(res => res.json())
-    })
+    const url = `http://localhost:5000/booking?email=${user?.email}`
+
+    const { data: products = [], isLoading, refetch } = useQuery({
+        queryKey: ['orders', user?.email],
+        queryFn: async () => {
+
+            const res = await fetch(url, {
+                headers: {
+                    authorization: `bearer ${localStorage.getItem('accessToken')}`
+                }
+            });
+            const data = await res.json()
+            return data;
+
+        }
+
+    });
+
+    if (isLoading) {
+        return <Loading></Loading>
+    }
+
+
 
     const deleteBooking = booking => {
-        fetch(`http://localhost:5000/booking/${booking._id}`, {
+        fetch(`http://localhost:5000/booking/${booking?._id}`, {
             method: 'DELETE',
 
         })
@@ -19,7 +40,7 @@ const MyOrders = () => {
             .then(data => {
                 console.log(data);
                 refetch('')
-                toast.success(`Delete Product ${booking.displayName}`)
+                toast.success(`Delete Product ${booking?.displayName}`)
             })
 
 
@@ -48,6 +69,7 @@ const MyOrders = () => {
                     </thead>
                     <tbody>
                         {
+
                             products?.map((product, i) => <tr key={product._id}>
                                 <th>{i + 1}</th>
                                 <td>

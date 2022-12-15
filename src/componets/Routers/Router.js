@@ -10,7 +10,7 @@ import Products from "../Pages/Products/Products";
 import ProductsDetails from "../Pages/Products/ProductsDetails";
 import Registers from "../Registers/Registers";
 import PrivateRouter from "./PrivateRouter";
-
+import AllUsers from "../DashBoard/AllUsers"
 
 
 const router = createBrowserRouter([
@@ -26,15 +26,12 @@ const router = createBrowserRouter([
                 path: '/products/:id',
                 element: <PrivateRouter><Products></Products></PrivateRouter>,
                 loader: ({ params }) => fetch(`http://localhost:5000/products/${params.id}`)
-
             },
-
             {
                 path: '/productsDetails/:id',
                 element: <ProductsDetails></ProductsDetails>,
                 loader: ({ params }) => fetch(`http://localhost:5000/productsDetails/${params.id}`)
             },
-
             {
                 path: '/blog',
                 element: <Blog></Blog>
@@ -53,7 +50,7 @@ const router = createBrowserRouter([
     {
         path: '/dashboard',
         element: <DashBoardLayer></DashBoardLayer>,
-        children:[
+        children: [
             {
                 path: '/dashboard',
                 element: <MyOrders></MyOrders>
@@ -61,6 +58,10 @@ const router = createBrowserRouter([
             {
                 path: '/dashboard/orders',
                 element: <AddProducts></AddProducts>
+            },
+            {
+                path: '/dashboard/allUsers',
+                element: <AllUsers></AllUsers>
             }
         ]
     }

@@ -1,12 +1,21 @@
 import { GoogleAuthProvider } from 'firebase/auth';
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { toast } from 'react-hot-toast';
-import { Link } from 'react-router-dom';
+import { json, Link, useNavigate } from 'react-router-dom';
 import { authContext } from '../AuthProvider/AuthProvider';
 import PrimaryButton from '../Buttons/PrimaryButton';
+import useToken from '../Hookes/UseToken';
 
 const Registers = () => {
     const { createUser, updateUser, googleLogin } = useContext(authContext)
+    
+    const [createUserEmail, setCreateUserEmail]= useState('')
+    const [token] = useToken(createUserEmail)
+    const navigate = useNavigate()
+
+    if(token){
+        navigate('/')
+    }
 
     const provider = new GoogleAuthProvider()
 
@@ -15,7 +24,7 @@ const Registers = () => {
             .then(result => {
                 const user = result.user;
                 console.log(user);
-                toast.success('Google Register Done')
+                toast.success('Google Register Done');
             })
             .catch(error => console.log(error))
     }
@@ -25,20 +34,19 @@ const Registers = () => {
         event.preventDefault()
 
         const from = event.target
-        const userName = from.name.value;
-        const userEmail = from.email.value;
+        const name = from.name.value;
+        const email = from.email.value;
         const password = from.password.value;
-        const setRole = from.role.value;
+        const Role = from.role.value;
 
-        console.log(userName, userEmail, setRole, password);
-        createUser(userEmail, password)
+        createUser(email, password)
             .then(result => {
-                const user = result.user
+                const user = result.user;
                 console.log(user);
-                toast.success('sign success')
-                from.reset('')
+                toast.success('sign success');
+                from.reset('');
                 const userInfo = {
-                    displayName: userName
+                    displayName: name
                 }
                 updateUser(userInfo)
                     .then(result => {
@@ -50,10 +58,33 @@ const Registers = () => {
             .catch(error => {
                 console.error(error)
                 // toast.error('password is Incorrect')
+            });
+
+        const list = {
+            name,
+            email,
+            password,
+            Role
+        }
+
+        // save user add database..
+
+        fetch('http://localhost:5000/user', {
+            method: 'POST',
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(list)
+        })
+            .then(res => res.json())
+            .then(data => {
+                console.log(data);
+                setCreateUserEmail(email)
+
             })
-
-
     }
+
+   
     return (
         <div>
             <div className="text-2xl">register</div>
