@@ -8,12 +8,12 @@ import useToken from '../Hookes/UseToken';
 
 const Registers = () => {
     const { createUser, updateUser, googleLogin } = useContext(authContext)
-    
-    const [createUserEmail, setCreateUserEmail]= useState('')
+
+    const [createUserEmail, setCreateUserEmail] = useState('')
     const [token] = useToken(createUserEmail)
     const navigate = useNavigate()
 
-    if(token){
+    if (token) {
         navigate('/')
     }
 
@@ -25,6 +25,7 @@ const Registers = () => {
                 const user = result.user;
                 console.log(user);
                 toast.success('Google Register Done');
+                setCreateUserEmail(user.email)
             })
             .catch(error => console.log(error))
     }
@@ -84,7 +85,7 @@ const Registers = () => {
             })
     }
 
-   
+
     return (
         <div>
             <div className="text-2xl">register</div>
@@ -112,9 +113,8 @@ const Registers = () => {
                                     <span className="label-text">Role</span>
                                 </label>
                                 <select name='role' className="select select-bordered w-full max-w-xs" >
-                                    <option>seller</option>
                                     <option>Byes</option>
-                                    <option>user</option>
+                                    <option>seller</option>
                                 </select>
 
 

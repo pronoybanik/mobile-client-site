@@ -16,13 +16,16 @@ const Nevbar = () => {
     const menu = <>
         <Link className='btn btn-ghost font-sans btn-sm ' to="/">Home</Link>
         <Link className='btn btn-ghost font-sans btn-sm ' to="/blog">Blog</Link>
-        <Link className='btn btn-ghost font-sans btn-sm ' to="/dashboard">DashBoard</Link>
 
         {
             user?.uid ?
-                <div onClick={handleLogin}>
-                    <PrimaryButton classes='btn btn-ghost font-serif btn-sm w-full'>log Out</PrimaryButton>
-                </div>
+
+                <>
+                    <Link className='btn btn-ghost font-sans btn-sm ' to="/dashboard">DashBoard</Link>
+                    <div onClick={handleLogin}>
+                        <PrimaryButton classes='btn btn-ghost font-serif btn-sm w-full'>log Out</PrimaryButton>
+                    </div>
+                </>
                 :
                 <>
                     <Link className='btn btn-ghost font-serif btn-sm ' to="/register">singUp</Link>
