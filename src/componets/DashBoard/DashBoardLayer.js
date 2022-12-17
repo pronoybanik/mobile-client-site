@@ -26,7 +26,8 @@ const DashBoardLayer = () => {
                         {
                             isAdmin &&
                             <>
-                                <li className='mb-2  btn btn-ghost'><Link to='/dashboard/allUsers'>All USERS DETAILS</Link></li>
+                                <li className='mb-2  btn btn-ghost'><Link to='/dashboard/seller'>All seller</Link></li>
+                                <li className='mb-2  btn btn-ghost'><Link to='/dashboard/byers'>All Byers</Link></li>
                             </>
 
 

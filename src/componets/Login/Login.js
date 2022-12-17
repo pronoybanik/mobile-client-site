@@ -27,9 +27,10 @@ const Login = () => {
             .then(result => {
                 const user = result.user;
                 console.log(user);
-                toast.success('Google Login successful')
-
-                // navigate(list, { replace: true });
+                // setLoginUserEmail(user?.email);
+                localStorage.setItem('accessToken', user?.accessToken)
+                navigate('/');
+                toast.success('Google Login successful');
 
 
             })
@@ -50,8 +51,8 @@ const Login = () => {
             .then(result => {
                 const user = result.user;
                 console.log(user);
-                setLoginUserEmail(email)
                 from.reset('');
+                setLoginUserEmail(user?.email)
                 toast.success('login success');
 
             })

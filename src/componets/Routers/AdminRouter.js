@@ -5,15 +5,15 @@ import useAdmin from '../Hookes/useAdmin';
 import Loading from '../Loader/Loading';
 
 const AdminRouter = ({ children }) => {
-    const { user } = useContext(authContext)
+    const { user, loading } = useContext(authContext)
     const location = useLocation();
     const [isAdmin, isAdminLoading] = useAdmin(user?.email)
 
-    if (isAdminLoading) {
+    if (loading || isAdminLoading) {
         return <Loading></Loading>
     }
 
-    if (isAdmin) {
+    if (user && isAdmin) {
         return children;
     }
     return <Navigate to='/login' state={{ from: location }} replace></Navigate>

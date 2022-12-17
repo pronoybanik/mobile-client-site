@@ -10,9 +10,10 @@ import Products from "../Pages/Products/Products";
 import ProductsDetails from "../Pages/Products/ProductsDetails";
 import Registers from "../Registers/Registers";
 import PrivateRouter from "./PrivateRouter";
-import AllUsers from "../DashBoard/AllUsers"
 import AdminRouter from "./AdminRouter";
 import SellerRouter from "./SellerRouter";
+import AllSeller from "../DashBoard/AllSeller";
+import AllByers from "../DashBoard/AllByers";
 
 
 const router = createBrowserRouter([
@@ -62,8 +63,12 @@ const router = createBrowserRouter([
                 element: <SellerRouter><AddProducts></AddProducts></SellerRouter>
             },
             {
-                path: '/dashboard/allUsers',
-                element: <AdminRouter><AllUsers></AllUsers></AdminRouter>
+                path: '/dashboard/seller',
+                element: <AdminRouter><AllSeller></AllSeller></AdminRouter>
+            },
+            {
+                path: '/dashboard/byers',
+                element: <AdminRouter><AllByers></AllByers></AdminRouter>
             }
         ]
     }

@@ -1,16 +1,15 @@
 import { GoogleAuthProvider } from 'firebase/auth';
 import React, { useContext, useState } from 'react';
 import { toast } from 'react-hot-toast';
-import { json, Link, useNavigate } from 'react-router-dom';
+import {  Link, useNavigate } from 'react-router-dom';
 import { authContext } from '../AuthProvider/AuthProvider';
-import PrimaryButton from '../Buttons/PrimaryButton';
 import useToken from '../Hookes/UseToken';
 
 const Registers = () => {
     const { createUser, updateUser, googleLogin } = useContext(authContext)
 
     const [createUserEmail, setCreateUserEmail] = useState('')
-    const [token] = useToken(createUserEmail)
+    const [token, loading] = useToken(createUserEmail)
     const navigate = useNavigate()
 
     if (token) {
@@ -24,10 +23,14 @@ const Registers = () => {
             .then(result => {
                 const user = result.user;
                 console.log(user);
+                // setCreateUserEmail(user?.email);
+                localStorage.setItem('accessToken', user?.accessToken)
+                navigate('/');
                 toast.success('Google Register Done');
-                setCreateUserEmail(user.email)
             })
             .catch(error => console.log(error))
+          
+
     }
 
 
@@ -44,6 +47,7 @@ const Registers = () => {
             .then(result => {
                 const user = result.user;
                 console.log(user);
+                setCreateUserEmail(user?.email)
                 toast.success('sign success');
                 from.reset('');
                 const userInfo = {
@@ -53,6 +57,7 @@ const Registers = () => {
                     .then(result => {
                         const user = result.user
                         console.log(user);
+                        
                     })
                     .catch(err => console.log(err))
             })
@@ -81,6 +86,7 @@ const Registers = () => {
             .then(data => {
                 console.log(data);
                 setCreateUserEmail(email)
+                // loading(false)
 
             })
     }
@@ -113,8 +119,8 @@ const Registers = () => {
                                     <span className="label-text">Role</span>
                                 </label>
                                 <select name='role' className="select select-bordered w-full max-w-xs" >
-                                    <option>Byes</option>
-                                    <option>seller</option>
+                                    <option>Buyer </option>
+                                    <option>Seller</option>
                                 </select>
 
 
