@@ -9,7 +9,7 @@ const Registers = () => {
     const { createUser, updateUser, googleLogin } = useContext(authContext)
 
     const [createUserEmail, setCreateUserEmail] = useState('')
-    const [token, loading] = useToken(createUserEmail)
+    const [token] = useToken(createUserEmail)
     const navigate = useNavigate()
 
     if (token) {
@@ -23,9 +23,9 @@ const Registers = () => {
             .then(result => {
                 const user = result.user;
                 console.log(user);
-                // setCreateUserEmail(user?.email);
-                localStorage.setItem('accessToken', user?.accessToken)
-                navigate('/');
+                setCreateUserEmail(user?.email);
+                // localStorage.setItem('accessToken', user?.accessToken)
+                // navigate('/');
                 toast.success('Google Register Done');
             })
             .catch(error => console.log(error))

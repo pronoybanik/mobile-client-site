@@ -1,5 +1,5 @@
 import React from 'react';
-import img from '../../../image/rami-al-zayat-w33-zg-dNL4-unsplash.jpg'
+import img from '../../../image/LT_Aggregator_D.jpg'
 
 const Headers = () => {
     return (

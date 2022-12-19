@@ -25,6 +25,7 @@ const Nevbar = () => {
                     <div onClick={handleLogin}>
                         <PrimaryButton classes='btn btn-ghost font-serif btn-sm w-full'>log Out</PrimaryButton>
                     </div>
+                    
                 </>
                 :
                 <>
@@ -34,6 +35,8 @@ const Nevbar = () => {
 
         }
     </>
+
+// Mobile Planet
 
     return (
         <div className='sticky top-0 z-50 '>
@@ -47,7 +50,7 @@ const Nevbar = () => {
                             {menu}
                         </ul>
                     </div>
-                    <Link className="btn btn-ghost normal-case text-xl btn-sm font-serif" to="/">Mobile Planet</Link>
+                    <Link className="btn btn-ghost normal-case text-xl btn-sm font-serif" to="/">Car site</Link>
                 </div>
                 <div className="navbar-center hidden lg:flex">
                     <ul className="menu menu-horizontal px-1">

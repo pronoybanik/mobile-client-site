@@ -27,9 +27,9 @@ const Login = () => {
             .then(result => {
                 const user = result.user;
                 console.log(user);
-                // setLoginUserEmail(user?.email);
-                localStorage.setItem('accessToken', user?.accessToken)
-                navigate('/');
+                setLoginUserEmail(user?.email);
+                // localStorage.setItem('accessToken', user?.accessToken)
+                // navigate('/');
                 toast.success('Google Login successful');
 
 

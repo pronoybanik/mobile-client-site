@@ -14,6 +14,7 @@ import AdminRouter from "./AdminRouter";
 import SellerRouter from "./SellerRouter";
 import AllSeller from "../DashBoard/AllSeller";
 import AllByers from "../DashBoard/AllByers";
+import AllProductDetails from "../Pages/ProductDetail/AllProductDetails";
 
 
 const router = createBrowserRouter([
@@ -46,7 +47,13 @@ const router = createBrowserRouter([
             {
                 path: '/register',
                 element: <Registers></Registers>
-            }
+            },
+            {
+                path: '/addProducts/:products',
+                element: <SellerRouter><AllProductDetails></AllProductDetails></SellerRouter>,
+                loader: ({ params }) => fetch(`http://localhost:5000/addProducts/${params.products}`)
+            },
+
         ]
 
     },
