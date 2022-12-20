@@ -144,7 +144,7 @@ const AddProducts = () => {
                                 <option disabled selected>Product Type!</option>
                                 <option>Smart Phone</option>
                                 <option>IPad</option>
-                                <option>Button Phone</option>
+                                <option>Button phone</option>
                             </select>
 
 
