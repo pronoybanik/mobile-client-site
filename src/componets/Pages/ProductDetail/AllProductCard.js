@@ -17,7 +17,7 @@ const AllProductCard = ({ data }) => {
                     <p>{productType}</p>
                     <p>Mobile Number:  {number}</p>
                     <div className="card-actions justify-end">
-                        <div className="badge badge-outline">price: {price}</div>
+                        <div className="badge badge-outline">price: BDT {price}</div>
                         <div className="badge badge-outline">Name: {product}</div>
                     </div>
                 </div>

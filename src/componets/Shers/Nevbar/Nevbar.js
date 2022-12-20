@@ -15,7 +15,7 @@ const Nevbar = () => {
 
     const menu = <>
         <Link className='btn btn-ghost font-sans btn-sm ' to="/">Home</Link>
-        <Link className='btn btn-ghost font-sans btn-sm ' to="/mobileCasing">Casing</Link>
+        <Link className='btn btn-ghost font-sans btn-sm ' to="/mobileCasing">Casing</Link   >
         <Link className='btn btn-ghost font-sans btn-sm ' to="/blog">Blog</Link>
 
         {
@@ -51,7 +51,7 @@ const Nevbar = () => {
                             {menu}
                         </ul>
                     </div>
-                    <Link className="btn btn-ghost normal-case text-xl btn-sm font-serif" to="/">Car site</Link>
+                    <Link className="btn btn-ghost normal-case text-xl btn-sm font-serif text-gray-600" to="/">MOBILE  .<p className='text-amber-600'>PLANET</p></Link>
                 </div>
                 <div className="navbar-center hidden lg:flex">
                     <ul className="menu menu-horizontal px-1">

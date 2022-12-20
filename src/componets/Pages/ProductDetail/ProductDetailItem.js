@@ -22,6 +22,7 @@ const ProductDetailItem = ({ data }) => {
                     </div>
                 </div>
             </div>
+
         </div>
     );
 };

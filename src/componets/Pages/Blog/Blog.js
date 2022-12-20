@@ -38,6 +38,8 @@ const Blog = () => {
                 <p>3- jwt are use that site</p>
                 <p>4- you are bye and sell the mobile</p>
                 <p>5- user only note js</p>
+
+                <p>6- Live Link:-  <strong> https://mobile-seller-ef181.web.app/ </strong> </p>
             </div>
         </div>
     );

@@ -10,7 +10,7 @@ const AllProductDetails = () => {
     return (
         <div>
 
-            <h1 className='text-2xl text-center my-10 font-semibold'>All type of products section:-   </h1>
+            <h1 className='text-2xl text-center my-10 font-semibold'>All type of products section:- {products[0].name}   </h1>
 
             <div className='grid  sm:grid-cols-1 md:grid-cols-2  lg:grid-cols-3 '>
                 {

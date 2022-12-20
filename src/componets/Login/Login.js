@@ -27,15 +27,26 @@ const Login = () => {
             .then(result => {
                 const user = result.user;
                 console.log(user);
-                setLoginUserEmail(user?.email);
-                // localStorage.setItem('accessToken', user?.accessToken)
-                // navigate('/');
+                
+                fetch('https://mobile-server-site.vercel.app/user', {
+                    method: 'POST',
+                    headers: {
+                        'content-type': 'application/json'
+                    },
+                    body: JSON.stringify(user)
+                })
+                    .then(res => res.json())
+                    .then(data => {
+                        console.log(data)
+                        setLoginUserEmail(user?.email);
+
+                    })
                 toast.success('Google Login successful');
 
 
             })
             .catch(error => {
-                console.error(error) 
+                console.error(error)
                 toast.error('Password is Incorrect')
             })
     }
@@ -88,7 +99,7 @@ const Login = () => {
                             </div>
                             <p className=''>{loginError}</p>
                             <div className="form-control mt-6">
-                                <button className="btn font-serif">Login</button>
+                                <button className="btn font-serif text-white">Login</button>
                             </div>
 
                             <div className='divider font-serif'>OR</div>

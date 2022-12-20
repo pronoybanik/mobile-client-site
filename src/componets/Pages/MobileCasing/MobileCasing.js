@@ -7,7 +7,7 @@ const MobileCasing = () => {
     const [casings, setCasings] = useState([])
 
     useEffect(() => {
-        fetch('http://localhost:5000/casing')
+        fetch('https://mobile-server-site.vercel.app/casing')
             .then(res => res.json())
             .then(data => setCasings(data))
     }, [])

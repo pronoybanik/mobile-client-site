@@ -1,4 +1,6 @@
 import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
+import PrimaryButton from '../../Buttons/PrimaryButton';
 import ProductDetailItem from './ProductDetailItem';
 
 const ProductDetail = () => {
@@ -6,7 +8,7 @@ const ProductDetail = () => {
     const [productDetail, setProductDetail] = useState([])
 
     useEffect(() => {
-        fetch('http://localhost:5000/ProductsDetail')
+        fetch('https://mobile-server-site.vercel.app/ProductsDetail')
             .then(res => res.json())
             .then(data => setProductDetail(data))
 
@@ -15,7 +17,7 @@ const ProductDetail = () => {
     return (
         <div className='font-serif'>
             <h2 className='text-4xl my-14 text-gray-600 text-center font-bold'
-            >Selling products</h2>
+            >Add And Sell Products</h2>
 
 
             <div className='grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 ml-4'>
@@ -26,6 +28,16 @@ const ProductDetail = () => {
                     ></ProductDetailItem>)
                 }
             </div>
+
+
+            <div className='card-actions justify-center'>
+                <Link  className='btn btn-outline  font-bold mt-12 ' 
+                to='/dashboard/orders'>ADD Item</Link>
+            </div>
+
+            {/* <Link to='/dashboard/orders'>
+                <PrimaryButton classes='btn flex justify-center'>ADD Item</PrimaryButton>
+            </Link> */}
 
         </div>
     );

@@ -36,7 +36,7 @@ const AddProducts = () => {
 
                     }
 
-                    fetch('http://localhost:5000/addProducts', {
+                    fetch('https://mobile-server-site.vercel.app/addProducts', {
                         method: 'POST',
                         headers: {
                             'content-type': 'application/json',
@@ -57,7 +57,7 @@ const AddProducts = () => {
             })
     }
 
-    
+
 
 
 
@@ -181,7 +181,7 @@ const AddProducts = () => {
                         </div>
 
 
-                        <input className='btn w-full' value='submit' type="submit" />
+                        <input className='btn w-full mt-4 text-white' value='submit' type="submit" />
                     </form>
 
                 </div>

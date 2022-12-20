@@ -1,19 +1,23 @@
+import { data } from 'autoprefixer';
 import { GoogleAuthProvider } from 'firebase/auth';
 import React, { useContext, useState } from 'react';
 import { toast } from 'react-hot-toast';
 import { Link, useNavigate } from 'react-router-dom';
 import { authContext } from '../AuthProvider/AuthProvider';
 import useToken from '../Hookes/UseToken';
+import { getAuth, signOut } from "firebase/auth";
 
+
+const auth = getAuth();
 const Registers = () => {
-    const { createUser, updateUser, googleLogin } = useContext(authContext);
+    const { createUser, updateUser, googleLogin, logOut } = useContext(authContext);
 
     const [createUserEmail, setCreateUserEmail] = useState('')
     const [token] = useToken(createUserEmail)
     const navigate = useNavigate()
 
     if (token) {
-        navigate('/')
+        navigate('/login')
     }
 
     const provider = new GoogleAuthProvider()
@@ -22,11 +26,22 @@ const Registers = () => {
         googleLogin(provider)
             .then(result => {
                 const user = result.user;
-                console.log(user);
-                setCreateUserEmail(user?.email);
-                // // localStorage.setItem('accessToken', user?.accessToken)
-                // // navigate('/');
+                console.log("google login", user.email);
+
                 toast.success('Google Register Done');
+                fetch('https://mobile-server-site.vercel.app/user', {
+                    method: 'POST',
+                    headers: {
+                        'content-type': 'application/json'
+                    },
+                    body: JSON.stringify(user)
+                })
+                    .then(res => res.json())
+                    .then(data => {
+                        console.log(data)
+                        setCreateUserEmail(user?.email);
+                    })
+
             })
             .catch(error => console.log(error))
 
@@ -48,18 +63,22 @@ const Registers = () => {
                 const user = result.user;
                 console.log(user);
                 setCreateUserEmail(user?.email)
-                toast.success('sign success');
                 from.reset('');
                 const userInfo = {
                     displayName: name
                 }
                 updateUser(userInfo)
-                    .then(result => {
-                        const user = result.user
-                        console.log(user);
+                .then(result => {
+                    const user = result.user
+                    console.log(user);
+                    
+                    toast.success('Account Register');
 
 
                     })
+                logOut()
+                    
+
                     .catch(err => console.log(err))
             })
             .catch(error => {
@@ -76,7 +95,7 @@ const Registers = () => {
 
         // save user add database..
 
-        fetch('http://localhost:5000/user', {
+        fetch('https://mobile-server-site.vercel.app/user', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'

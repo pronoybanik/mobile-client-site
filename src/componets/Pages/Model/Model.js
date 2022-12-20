@@ -32,7 +32,7 @@ const Model = ({ mobileProps, setMobileBooking }) => {
 
         console.log(list);
 
-        fetch('http://localhost:5000/booking', {
+        fetch('https://mobile-server-site.vercel.app/booking', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json',
