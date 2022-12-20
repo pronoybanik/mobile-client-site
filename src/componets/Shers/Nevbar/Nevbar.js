@@ -15,6 +15,7 @@ const Nevbar = () => {
 
     const menu = <>
         <Link className='btn btn-ghost font-sans btn-sm ' to="/">Home</Link>
+        <Link className='btn btn-ghost font-sans btn-sm ' to="/mobileCasing">Casing</Link>
         <Link className='btn btn-ghost font-sans btn-sm ' to="/blog">Blog</Link>
 
         {

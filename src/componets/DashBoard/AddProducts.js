@@ -36,7 +36,7 @@ const AddProducts = () => {
 
                     }
 
-                    fetch('https://mobile-server-site.vercel.app/addProducts', {
+                    fetch('http://localhost:5000/addProducts', {
                         method: 'POST',
                         headers: {
                             'content-type': 'application/json',
@@ -144,7 +144,7 @@ const AddProducts = () => {
                                 <option disabled selected>Product Type!</option>
                                 <option>Smart Phone</option>
                                 <option>IPad</option>
-                                <option>Button phone</option>
+                                <option>Button Phone</option>
                             </select>
 
 

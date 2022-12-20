@@ -6,9 +6,9 @@ import { authContext } from '../AuthProvider/AuthProvider';
 import Loading from '../Loader/Loading';
 
 const MyOrders = () => {
-    const { user } = useContext(authContext)
+    const { user } = useContext(authContext);
 
-    const url = `https://mobile-server-site.vercel.app/booking?email=${user?.email}`
+    const url = `http://localhost:5000/booking?email=${user?.email}`
 
     const { data: products = [], isLoading, refetch } = useQuery({
         queryKey: ['orders', user?.email],
@@ -33,7 +33,7 @@ const MyOrders = () => {
 
 
     const deleteBooking = booking => {
-        fetch(`https://mobile-server-site.vercel.app/booking/${booking?._id}`, {
+        fetch(`http://localhost:5000/booking/${booking?._id}`, {
             method: 'DELETE',
 
         })
@@ -50,11 +50,11 @@ const MyOrders = () => {
 
     return (
 
-        <div>
-            <h2>my orders</h2>
+        <div className='font-serif'>
+            <h2 className='font-semibold text-3xl text-center my-10 '>My Booking Order</h2>
 
-            <div className="overflow">
-                <table className="table w-full">
+            <div className="overflow p-6">
+                <table className="table  w-full ">
 
                     <thead>
                         <tr>

@@ -1,6 +1,7 @@
 import React from 'react';
 import EmailFiled from '../EmailFiled/EmailFiled';
 import Headers from '../Headers/Headers';
+import MobileDetails from '../MobileDetails/MobileDetails';
 import ProductDetail from '../ProductDetail/ProductDetail';
 import Services from '../Services/Services';
 
@@ -9,7 +10,8 @@ const Home = () => {
         <div>
             <Headers></Headers>
             <Services></Services>
-            {/* <ProductDetail></ProductDetail> */}
+            <MobileDetails></MobileDetails>
+            <ProductDetail></ProductDetail>
             <EmailFiled></EmailFiled>
         </div>
     );

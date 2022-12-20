@@ -11,7 +11,7 @@ const AllSeller = () => {
         queryKey: ['seller'],
         queryFn: async () => {
 
-            const res = await fetch('https://mobile-server-site.vercel.app/seller', {
+            const res = await fetch('http://localhost:5000/seller', {
                 headers: {
                     authorization: `bearer ${localStorage.getItem('accessToken')}`
                 }
@@ -24,7 +24,7 @@ const AllSeller = () => {
     });
 
     const handleDelete = user => {
-        fetch(`https://mobile-server-site.vercel.app/user/${user?._id}`, {
+        fetch(`http://localhost:5000/user/${user?._id}`, {
             method: 'DELETE',
 
         })
@@ -43,7 +43,7 @@ const AllSeller = () => {
     return (
         <div className='font-serif'>
             <h2 className='text-3xl  font-semibold text-center my-10'>All Seller Details:- {allUser?.length}</h2>
-            <div className="overflow-x-auto ">
+            <div className="overflow-x-auto p-6">
                 <table className="table w-full">
 
                     <thead>

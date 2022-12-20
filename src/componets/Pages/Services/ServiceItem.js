@@ -7,7 +7,7 @@ const ServiceItem = ({ data }) => {
         <div>
 
             <Link to={`/products/${id}`}>
-                <div className="card w-96 h-80 bg-base-100 shadow-xl image-full">
+                <div className="card w-96 h-64 bg-base-100 shadow-xl image-full">
                     <figure><img className='' src={photo_url} alt="Shoes" /></figure>
 
                 </div>

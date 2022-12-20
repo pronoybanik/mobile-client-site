@@ -8,7 +8,8 @@ const Products = () => {
 
     return (
         <div>
-            <h1 className='text-3xl text-center my-4 font-bold text-green-500 font-serif'>All Second Hand Product</h1>
+            <h1 className='text-3xl text-center my-4 font-bold text-green-500 font-serif'
+            >All Second Hand Product</h1>
             {
                 data.map(d => <AllProducts
                     key={d.id}
