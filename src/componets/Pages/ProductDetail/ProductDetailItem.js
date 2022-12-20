@@ -8,14 +8,14 @@ const ProductDetailItem = ({ data }) => {
         <div>
             
             <div className="card w-96 h-full bg-base-100 shadow-xl image-full">
-                <figure><img src={data.photo_url} p alt="Shoes" /></figure>
+                <figure><img src={data.photo_url} alt="Shoes" /></figure>
                 <div className="card-body">
                     <h2 className="card-title">{data.name}</h2>
                     <p></p>
                     <div className="card-actions justify-end">
                         <Link to={`/addProducts/${data.name}`}>
 
-                            <PrimaryButton classes='btn '>Detail</PrimaryButton>
+                            <PrimaryButton classes='btn btn-sm'>Detail</PrimaryButton>
 
                         </Link>
                     </div>

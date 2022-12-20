@@ -1,13 +1,14 @@
 import { useQuery } from '@tanstack/react-query';
 import React, { useContext } from 'react';
 import { toast } from 'react-hot-toast';
+import { Link } from 'react-router-dom';
 import { authContext } from '../AuthProvider/AuthProvider';
 import Loading from '../Loader/Loading';
 
 const MyOrders = () => {
     const { user } = useContext(authContext)
 
-    const url = `http://localhost:5000/booking?email=${user?.email}`
+    const url = `https://mobile-server-site.vercel.app/booking?email=${user?.email}`
 
     const { data: products = [], isLoading, refetch } = useQuery({
         queryKey: ['orders', user?.email],
@@ -32,7 +33,7 @@ const MyOrders = () => {
 
 
     const deleteBooking = booking => {
-        fetch(`http://localhost:5000/booking/${booking?._id}`, {
+        fetch(`https://mobile-server-site.vercel.app/booking/${booking?._id}`, {
             method: 'DELETE',
 
         })
@@ -65,6 +66,7 @@ const MyOrders = () => {
                             <th>Number</th>
                             <th>Location</th>
                             <th>Delete</th>
+                            <th>payment</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -79,11 +81,27 @@ const MyOrders = () => {
                                 </td>
                                 <td>{product.displayName}</td>
                                 <td>{product.email}</td>
-                                <td>$ {product.price}</td>
+                                <td>BDT {product.price}</td>
                                 <td>{product.number}</td>
                                 <td>{product.location}</td>
                                 <td>
                                     <button onClick={() => deleteBooking(product)} className='btn  btn-outline btn-error btn-sm text-white'>cancel</button>
+                                </td>
+                                <td>
+                                    {
+                                        product.price && !product.paid &&
+                                        <Link to={`/dashboard/payment/${product._id}`}>
+                                            <button className='btn btn-outline btn-info btn-sm text-white'>pay</button>
+
+                                        </Link>
+                                    }
+                                    {
+                                        product.price && product.paid && <span
+                                            className='btn btn-outline btn-success btn-sm '
+                                        >
+                                            paid
+                                        </span>
+                                    }
                                 </td>
 
                             </tr>)

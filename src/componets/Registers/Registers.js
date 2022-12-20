@@ -1,12 +1,12 @@
 import { GoogleAuthProvider } from 'firebase/auth';
 import React, { useContext, useState } from 'react';
 import { toast } from 'react-hot-toast';
-import {  Link, useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { authContext } from '../AuthProvider/AuthProvider';
 import useToken from '../Hookes/UseToken';
 
 const Registers = () => {
-    const { createUser, updateUser, googleLogin } = useContext(authContext)
+    const { createUser, updateUser, googleLogin } = useContext(authContext);
 
     const [createUserEmail, setCreateUserEmail] = useState('')
     const [token] = useToken(createUserEmail)
@@ -24,12 +24,12 @@ const Registers = () => {
                 const user = result.user;
                 console.log(user);
                 setCreateUserEmail(user?.email);
-                // localStorage.setItem('accessToken', user?.accessToken)
-                // navigate('/');
+                // // localStorage.setItem('accessToken', user?.accessToken)
+                // // navigate('/');
                 toast.success('Google Register Done');
             })
             .catch(error => console.log(error))
-          
+
 
     }
 
@@ -57,7 +57,8 @@ const Registers = () => {
                     .then(result => {
                         const user = result.user
                         console.log(user);
-                        
+
+
                     })
                     .catch(err => console.log(err))
             })
@@ -75,7 +76,7 @@ const Registers = () => {
 
         // save user add database..
 
-        fetch('http://localhost:5000/user', {
+        fetch('https://mobile-server-site.vercel.app/user', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'
@@ -94,7 +95,6 @@ const Registers = () => {
 
     return (
         <div>
-            <div className="text-2xl">register</div>
 
             <div className="hero font-serif">
                 <div className="hero-content ">
@@ -119,8 +119,8 @@ const Registers = () => {
                                     <span className="label-text">Role</span>
                                 </label>
                                 <select name='role' className="select select-bordered w-full max-w-xs" >
-                                    <option>Buyer </option>
-                                    <option>Seller</option>
+                                    <option value='Buyer'>Buyer </option>
+                                    <option value='Seller'>Seller</option>
                                 </select>
 
 

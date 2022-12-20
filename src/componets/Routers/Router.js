@@ -15,12 +15,15 @@ import SellerRouter from "./SellerRouter";
 import AllSeller from "../DashBoard/AllSeller";
 import AllByers from "../DashBoard/AllByers";
 import AllProductDetails from "../Pages/ProductDetail/AllProductDetails";
+import Payment from "../Payment/Payment";
+import ErrorPage from "../ErrorPage/ErrorPage";
 
 
 const router = createBrowserRouter([
     {
         path: '/',
         element: <Main></Main>,
+        errorElement: <ErrorPage></ErrorPage>,
         children: [
             {
                 path: '/',
@@ -29,12 +32,12 @@ const router = createBrowserRouter([
             {
                 path: '/products/:id',
                 element: <PrivateRouter><Products></Products></PrivateRouter>,
-                loader: ({ params }) => fetch(`http://localhost:5000/products/${params.id}`)
+                loader: ({ params }) => fetch(`https://mobile-server-site.vercel.app/products/${params.id}`)
             },
             {
                 path: '/productsDetails/:id',
                 element: <ProductsDetails></ProductsDetails>,
-                loader: ({ params }) => fetch(`http://localhost:5000/productsDetails/${params.id}`)
+                loader: ({ params }) => fetch(`https://mobile-server-site.vercel.app/productsDetails/${params.id}`)
             },
             {
                 path: '/blog',
@@ -50,8 +53,8 @@ const router = createBrowserRouter([
             },
             {
                 path: '/addProducts/:products',
-                element: <SellerRouter><AllProductDetails></AllProductDetails></SellerRouter>,
-                loader: ({ params }) => fetch(`http://localhost:5000/addProducts/${params.products}`)
+                element: <AllProductDetails></AllProductDetails>,
+                loader: ({ params }) => fetch(`https://mobile-server-site.vercel.app/addProducts/${params.products}`)
             },
 
         ]
@@ -60,6 +63,7 @@ const router = createBrowserRouter([
     {
         path: '/dashboard',
         element: <PrivateRouter><DashBoardLayer></DashBoardLayer></PrivateRouter>,
+        errorElement: <ErrorPage></ErrorPage>,
         children: [
             {
                 path: '/dashboard',
@@ -76,6 +80,11 @@ const router = createBrowserRouter([
             {
                 path: '/dashboard/byers',
                 element: <AdminRouter><AllByers></AllByers></AdminRouter>
+            },
+            {
+                path: '/dashboard/payment/:id',
+                element: <Payment></Payment>,
+                loader: ({ params }) => fetch(`https://mobile-server-site.vercel.app/booking/${params.id}`)
             }
         ]
     }

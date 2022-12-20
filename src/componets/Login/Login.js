@@ -65,7 +65,6 @@ const Login = () => {
 
     return (
         <div>
-            <h1 className='text-2xl '> Login </h1>
             <div className="hero ">
                 <div className="hero-content ">
                     <form onSubmit={handleLogin} className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
