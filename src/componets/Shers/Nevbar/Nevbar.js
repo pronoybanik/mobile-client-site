@@ -26,7 +26,7 @@ const Nevbar = () => {
                     <div onClick={handleLogin}>
                         <PrimaryButton classes='btn btn-ghost font-serif btn-sm w-full'>log Out</PrimaryButton>
                     </div>
-                    
+
                 </>
                 :
                 <>
@@ -37,7 +37,15 @@ const Nevbar = () => {
         }
     </>
 
-// Mobile Planet
+    // Mobile Planet
+
+    //Admin:-
+    //Email: pronoybanik@gmail.com
+    //pass: 112233
+
+    //seller:-
+    //Email:pornoy@gmail.com
+    //pass: 112233
 
     return (
         <div className='sticky top-0 z-50 '>

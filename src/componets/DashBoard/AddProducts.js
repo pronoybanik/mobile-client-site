@@ -8,18 +8,18 @@ const AddProducts = () => {
     const { register, formState: { errors }, handleSubmit } = useForm();
     const navigate = useNavigate()
 
-    const imageHostKey = process.env.REACT_APP_imgbb;
+    // const imageHostKey = process.env.REACT_APP_imgbb;
+    
     const handleAddItem = data => {
-        console.log(data);
-        const image = data.image[0]
-
+        const imageData = data.image[0];
         const formData = new FormData();
-        formData.append('image', image);
-        // console.log(formData);
-        const url = `https://api.imgbb.com/1/upload?key=${imageHostKey}`
+        formData.append('image', imageData);
+
+        const url = 'https://api.imgbb.com/1/upload?key=99f58a547dc4b1d269148eb1b605ef29'
         fetch(url, {
             method: 'POST',
             body: formData
+
         })
             .then(res => res.json())
             .then(imgData => {
@@ -56,8 +56,6 @@ const AddProducts = () => {
                 }
             })
     }
-
-
 
 
 
@@ -179,126 +177,14 @@ const AddProducts = () => {
                             {errors.image && <p className='text-red-800'>{errors.image?.message}</p>}
 
                         </div>
-
-
                         <input className='btn w-full mt-4 text-white' value='submit' type="submit" />
                     </form>
 
                 </div>
             </div>
-
         </div>
 
-        // <div className='font-serif'>
-        //     {/* <h2 className='text-3xl text-center font-bold'> Add products</h2> */}
 
-
-        //     <div className="hero ">
-        //         <div className="hero-content ">
-        //             <form onSubmit={handleProduct} className="card flex-shrink-0 max-w-[1440px] shadow-2xl bg-base-100 py-10">
-        //                 <h1 className="text-4xl font-bold text-center mt-2 font-serif">Add Products</h1>
-
-        //                 <div className="card-body w-full">
-        //                     <div className='flex  gap-2'>
-        //                         <div className="form-control">
-        //                             <label className="label">
-        //                                 <span className="label-text font-serif">Name</span>
-        //                             </label>
-        //                             <input name='name' type="text" placeholder="Name" className="input input-bordered " />
-        //                         </div>
-        //                         <div className="form-control">
-        //                             <label className="label">
-        //                                 <span className="label-text font-serif">Price</span>
-        //                             </label>
-        //                             <input name='price' type="text" placeholder="set price" className="input input-bordered " />
-        //                         </div>
-        //                     </div>
-
-
-        //                     <div className="form-control">
-        //                         <label className="label">
-        //                             <span className="label-text font-serif">Quality</span>
-        //                         </label>
-        //                         {/* <input name='password' type="password" placeholder="password" className="input input-bordered" /> */}
-        //                         <select name='quality' className="select select-bordered w-full ">
-        //                             <option disabled selected>Product condition!</option>
-        //                             <option>Excellent</option>
-        //                             <option>Good</option>
-        //                             <option>Fair</option>
-        //                         </select>
-
-        //                     </div>
-
-        //                     <div className='flex gap-2'>
-
-        //                         <div className="form-control">
-        //                             <label className="label">
-        //                                 <span className="label-text font-serif">Number</span>
-        //                             </label>
-        //                             <input name='number' type="text" placeholder="Give your Number" className="input input-bordered " />
-        //                         </div>
-
-
-        //                         <div className="form-control">
-        //                             <label className="label">
-        //                                 <span className="label-text font-serif">Location</span>
-        //                             </label>
-        //                             <input name='location' type="text" placeholder="Location" className="input input-bordered " />
-        //                         </div>
-
-        //                     </div>
-
-        //                     <div className="form-control ">
-        //                         <label className="label">
-        //                             <span className="label-text font-serif">Image</span>
-        //                         </label>
-        //                         <input name='photo' type="file" placeholder="..." className="input input-bordered " />
-        //                     </div>
-
-
-        //                     <div className='flex gap-2'>
-
-        //                         <div className="form-control w-full">
-        //                             <label className="label">
-        //                                 <span className="label-text font-serif">Product Type</span>
-        //                             </label>
-        //                             <select name='product' className="select select-bordered    ">
-        //                                 <option disabled selected>product Type</option>
-        //                                 <option>Smart Phone</option>
-        //                                 <option>Ipad</option>
-        //                                 <option>Button Phone</option>
-        //                             </select>
-
-        //                         </div>
-
-        //                         <div className="form-control ">
-        //                             <label className="label">
-        //                                 <span className="label-text font-serif">Year of Purchase</span>
-        //                             </label>
-        //                             <input name='buyer' type="text" placeholder="...." className="input input-bordered " />
-        //                         </div>
-
-        //                     </div>
-
-        //                     <div className="form-control ">
-        //                         <label className="label">
-        //                             <span className="label-text font-serif">Details</span>
-        //                         </label>
-        //                         <textarea name='bio' className="textarea textarea-bordered" placeholder="Bio"></textarea>
-        //                     </div>
-
-
-
-        //                     <div className="form-control mt-6">
-        //                         <button className="btn font-serif">ADD ITEM</button>
-        //                     </div>
-
-
-        //                 </div>
-        //             </form>
-        //         </div>
-        //     </div>
-        // </div>
     );
 };
 

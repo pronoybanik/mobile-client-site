@@ -4,12 +4,12 @@ import PrimaryButton from '../../Buttons/PrimaryButton';
 
 const EmailFiled = () => {
     return (
-        <section className='mt-20 py-12 font-serif'
+        <section data-aos="zoom-in-down" className='mt-20 py-12 font-serif'
             style={{
                 background: `url(${img})`
             }}
         >
-            <div className='text-center mb-10 '>
+            <div className='text-center mb-10 ' >
                 <h2 className=' text-info font-bold  mb-2'>Contact Us</h2>
                 <h2 className='text-2xl text-white '>Help with us</h2>
             </div>

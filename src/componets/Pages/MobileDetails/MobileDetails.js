@@ -3,7 +3,7 @@ import img from '../../../image/Apple-iPhone-14-iPhone-14-Plus-hero-220907_Full-
 
 const MobileDetails = () => {
     return (
-        <div className='my-28 font-serif'>
+        <div className='my-28 font-serif' data-aos="zoom-in-down">
             <h1 className='font-semibold text-center text-5xl my-12 text-gray-600'>New Products</h1>
             <div >
                 <div className="hero">

@@ -2,7 +2,7 @@ import React from 'react';
 
 const Footer = () => {
     return (
-        <div className='mt-8'>
+        <div className='mt-8' data-aos="zoom-in-down">
 
             <footer className="footer p-10 bg-base-200 text-base-content">
                 <div>

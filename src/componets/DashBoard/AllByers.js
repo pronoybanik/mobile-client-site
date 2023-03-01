@@ -28,7 +28,7 @@ const AllByers = () => {
             .then(data => {
                 console.log(data)
                 refetch('')
-                toast.success(`Delete Product`)
+                toast.success(`Delete user ${user.name}`)
 
 
             })

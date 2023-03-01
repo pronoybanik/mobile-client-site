@@ -15,7 +15,7 @@ const ProductDetail = () => {
     }, []);
 
     return (
-        <div className='font-serif'>
+        <div className='font-serif' >
             <h2 className='text-4xl my-14 text-gray-600 text-center font-bold'
             >Add And Sell Products</h2>
 
@@ -31,13 +31,10 @@ const ProductDetail = () => {
 
 
             <div className='card-actions justify-center'>
-                <Link  className='btn btn-outline  font-bold mt-12 ' 
-                to='/dashboard/orders'>ADD Item</Link>
+                <Link className='btn btn-outline  font-bold mt-12 '
+                    to='/dashboard/orders'>ADD Item</Link>
             </div>
 
-            {/* <Link to='/dashboard/orders'>
-                <PrimaryButton classes='btn flex justify-center'>ADD Item</PrimaryButton>
-            </Link> */}
 
         </div>
     );

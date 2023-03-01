@@ -6,7 +6,7 @@ const ProductDetailItem = ({ data }) => {
     // console.log(data);
     const { photo_url, name } = data;
     return (
-        <div>
+        <div data-aos="zoom-in-down">
 
             <div className="card w-96 h-64 bg-base-100 shadow-xl image-full">
                 <figure><img src={photo_url} alt="Shoes" /></figure>

@@ -1,14 +1,12 @@
-import { data } from 'autoprefixer';
 import { GoogleAuthProvider } from 'firebase/auth';
 import React, { useContext, useState } from 'react';
 import { toast } from 'react-hot-toast';
 import { Link, useNavigate } from 'react-router-dom';
 import { authContext } from '../AuthProvider/AuthProvider';
 import useToken from '../Hookes/UseToken';
-import { getAuth, signOut } from "firebase/auth";
 
 
-const auth = getAuth();
+
 const Registers = () => {
     const { createUser, updateUser, googleLogin, logOut } = useContext(authContext);
 
