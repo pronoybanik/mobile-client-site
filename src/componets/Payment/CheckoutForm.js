@@ -15,7 +15,7 @@ const CheckoutForm = ({ data }) => {
     const { price, name, email, _id } = data;
 
     useEffect(() => {
-        fetch('https://mobile-server-site.vercel.app/create-payment-intent', {
+        fetch('http://localhost:5000/create-payment-intent', {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
@@ -88,7 +88,7 @@ const CheckoutForm = ({ data }) => {
                 bookingId: _id
 
             }
-            fetch('https://mobile-server-site.vercel.app/payments', {
+            fetch('http://localhost:5000/payments', {
                 method: 'POST',
                 headers: {
                     'content-type': 'application/json',

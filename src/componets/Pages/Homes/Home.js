@@ -1,4 +1,6 @@
 import React from 'react';
+import NeedHelp from '../../NeedHelp/NeedHelp';
+import Reviews from '../../Reviews/Reviews';
 import EmailFiled from '../EmailFiled/EmailFiled';
 import Headers from '../Headers/Headers';
 import MobileDetails from '../MobileDetails/MobileDetails';
@@ -13,6 +15,9 @@ const Home = () => {
             <MobileDetails></MobileDetails>
             <ProductDetail></ProductDetail>
             <EmailFiled></EmailFiled>
+            <Reviews></Reviews>
+            <NeedHelp></NeedHelp>
+
         </div>
     );
 };

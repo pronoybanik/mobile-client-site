@@ -9,7 +9,7 @@ const MyOrders = () => {
 
     const { user } = useContext(authContext);
     
-    const url = `https://mobile-server-site.vercel.app/booking?email=${user?.email}`
+    const url = `http://localhost:5000/booking?email=${user?.email}`
      
     const { data: products = [], isLoading, refetch } = useQuery({
         queryKey: ['orders', user?.email],
@@ -34,7 +34,7 @@ const MyOrders = () => {
 
 
     const deleteBooking = booking => {
-        fetch(`https://mobile-server-site.vercel.app/booking/${booking?._id}`, {
+        fetch(`http://localhost:5000/booking/${booking?._id}`, {
             method: 'DELETE',
 
         })

@@ -8,15 +8,15 @@ const ProductDetail = () => {
     const [productDetail, setProductDetail] = useState([])
 
     useEffect(() => {
-        fetch('https://mobile-server-site.vercel.app/ProductsDetail')
+        fetch('http://localhost:5000/ProductsDetail')
             .then(res => res.json())
             .then(data => setProductDetail(data))
 
     }, []);
 
     return (
-        <div className='font-serif' >
-            <h2 className='text-4xl my-14 text-gray-600 text-center font-bold'
+        <div className='font-serif'  >
+            <h2 className='text-4xl my-14 text-gray-600 text-center font-bold uppercase'
             >Add And Sell Products</h2>
 
 

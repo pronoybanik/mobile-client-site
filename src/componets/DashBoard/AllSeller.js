@@ -11,7 +11,7 @@ const AllSeller = () => {
         queryKey: ['seller'],
         queryFn: async () => {
 
-            const res = await fetch('https://mobile-server-site.vercel.app/seller', {
+            const res = await fetch('http://localhost:5000/seller', {
                 headers: {
                     authorization: `bearer ${localStorage.getItem('accessToken')}`
                 }
@@ -24,7 +24,7 @@ const AllSeller = () => {
     });
 
     const handleDelete = user => {
-        fetch(`https://mobile-server-site.vercel.app/user/${user?._id}`, {
+        fetch(`http://localhost:5000/user/${user?._id}`, {
             method: 'DELETE',
 
         })

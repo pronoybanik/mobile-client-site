@@ -7,7 +7,7 @@ const AllByers = () => {
     const { data: allByers, refetch } = useQuery({
         queryKey: ['byers'],
         queryFn: async () => {
-            const res = await fetch('https://mobile-server-site.vercel.app/buyer', {
+            const res = await fetch('http://localhost:5000/buyer', {
                 headers: {
                     authorization: `bearer ${localStorage.getItem('accessToken')}`
 
@@ -20,7 +20,7 @@ const AllByers = () => {
 
 
     const handleDelete = user => {
-        fetch(`https://mobile-server-site.vercel.app/user/${user?._id}`, {
+        fetch(`http://localhost:5000/user/${user?._id}`, {
             method: 'DELETE',
 
         })
