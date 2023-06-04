@@ -8,7 +8,7 @@ const ProductDetail = () => {
     const [productDetail, setProductDetail] = useState([])
 
     useEffect(() => {
-        fetch('http://localhost:5000/ProductsDetail')
+        fetch('https://mobile-server-site.vercel.app/ProductsDetail')
             .then(res => res.json())
             .then(data => setProductDetail(data))
 
@@ -20,7 +20,7 @@ const ProductDetail = () => {
             >Add And Sell Products</h2>
 
 
-            <div className='grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 ml-4'>
+            <div className='grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 lg:ml-12'>
                 {
                     productDetail?.map(detail => <ProductDetailItem
                         key={detail._id}

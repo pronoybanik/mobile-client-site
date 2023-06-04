@@ -10,9 +10,9 @@ const Reviews = () => {
         </div>
 
         <div>
-          <div className="grid lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1 my-8">
+          <div className="grid lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1">
             {/* fast card */}
-            <div className="card w-96 bg-base-100 shadow-xl">
+            <div className="card w-96 bg-base-100 shadow-xl mb-2 ">
               <div className="card-body">
                 <div className="avatar">
                   <div className="w-20 rounded-full">
@@ -69,7 +69,7 @@ const Reviews = () => {
 
             {/* second card */}
 
-            <div className="card w-96 bg-base-100 shadow-xl">
+            <div className="card w-96 bg-base-100 shadow-xl mb-2">
               <div className="card-body">
                 <div className="avatar">
                   <div className="w-20 rounded-full">

@@ -12,7 +12,7 @@ const EmailFiled = () => {
 
     console.log();
 
-    fetch("http://localhost:5000/feedBack", {
+    fetch("https://mobile-server-site.vercel.app/feedBack", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -22,7 +22,7 @@ const EmailFiled = () => {
       .then((res) => res.json())
       .then((data) => {
         console.log(data);
-        
+
       });
   };
 

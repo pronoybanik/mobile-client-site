@@ -9,8 +9,10 @@ const Login = () => {
   const { signUser, googleLogin } = useContext(authContext);
 
   const location = useLocation();
+  console.log(location);
   const navigate = useNavigate();
   const form = location.state?.from?.pathname || "/";
+  console.log(form);
 
   const [loginError, setLoginError] = useState("");
   const [loginUserEmail, setLoginUserEmail] = useState("");
@@ -25,9 +27,8 @@ const Login = () => {
     googleLogin(provider)
       .then((result) => {
         const user = result.user;
-        console.log(user);
 
-        fetch("http://localhost:5000/user", {
+        fetch("https://mobile-server-site.vercel.app/user", {
           method: "POST",
           headers: {
             "content-type": "application/json",
@@ -68,24 +69,26 @@ const Login = () => {
       });
   };
 
+  // <div>
+  //   <h1 className="text-lg font-bold">1. Admin Access:</h1>
+  //   <p>
+  //     <p className="font-bold">Email:</p> pronoybanik@gmail.com
+  //   </p>
+  //   <p>password: 112233</p>
+  //   <h1 className="text-lg font-bold">2. Seller Access: </h1>
+  //   <p>Email: pronoy@gmail.com</p>
+  //   <p>password: 112233</p>
+  // </div>
+
   return (
     <div>
       <div className="hero ">
         <div className="hero-content ">
-          <div>
-            <h1 className="text-lg font-bold">1. Admin Access:</h1>
-            <p className="bold">Email: pronoybanik@gmail.com</p>
-            <p>password: 112233</p>
-            <h1 className="text-lg font-bold">2. Seller Access: </h1>
-            <p>Email: pronoy@gmail.com</p>
-            <p>password: 112233</p>
-          </div>
-
           <form
             onSubmit={handleLogin}
             className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100"
           >
-            <h1 className="text-4xl font-bold text-center mt-10 font-serif">
+            <h1 className="text-4xl font-bold text-center mt-8 font-serif">
               Login Now
             </h1>
             <div className="card-body w-96">

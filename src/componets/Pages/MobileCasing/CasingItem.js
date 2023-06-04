@@ -5,7 +5,7 @@ const CasingItem = ({ data }) => {
     return (
         <div>
 
-            <div className="card w-80 h-96 shadow-xl">
+            <div className="card w-full h-96 shadow-xl">
                 <div className="card-body">
                     <h2 className="card-title">{data.name}</h2>
                 </div>

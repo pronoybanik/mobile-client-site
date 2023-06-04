@@ -27,7 +27,7 @@ const Registers = () => {
                 console.log("google login", user.email);
 
                 toast.success('Google Register Done');
-                fetch('http://localhost:5000/user', {
+                fetch('https://mobile-server-site.vercel.app/user', {
                     method: 'POST',
                     headers: {
                         'content-type': 'application/json'
@@ -93,7 +93,7 @@ const Registers = () => {
 
         // save user add database..
 
-        fetch('http://localhost:5000/user', {
+        fetch('https://mobile-server-site.vercel.app/user', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'

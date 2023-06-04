@@ -7,7 +7,7 @@ const MobileCasing = () => {
     const [casings, setCasings] = useState([])
 
     useEffect(() => {
-        fetch('http://localhost:5000/casing')
+        fetch('https://mobile-server-site.vercel.app/casing')
             .then(res => res.json())
             .then(data => setCasings(data))
     }, [])
@@ -30,7 +30,7 @@ const MobileCasing = () => {
 
             <h2 className='text-4xl text-center font-bold my-12'>All Type of MobileCasing</h2>
 
-            <div className='grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-4 ml-4 gap-4'>
+            <div className='grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-4 mx-2 10 gap-4'>
                 {
                     casings.map(casing => <CasingItem
                         key={casing._id}

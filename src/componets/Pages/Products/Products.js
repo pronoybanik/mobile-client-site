@@ -1,10 +1,10 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { useLoaderData } from 'react-router-dom';
 import AllProducts from './AllProducts';
 
 const Products = () => {
 
-    const data = useLoaderData()
+    const data = useLoaderData();
 
     return (
         <div>

@@ -33,12 +33,12 @@ const router = createBrowserRouter([
             {
                 path: '/products/:id',
                 element: <PrivateRouter><Products></Products></PrivateRouter>,
-                loader: ({ params }) => fetch(`http://localhost:5000/products/${params.id}`)
+                loader: ({ params }) => fetch(`https://mobile-server-site.vercel.app/products/${params.id}`)
             },
             {
                 path: '/productsDetails/:id',
                 element: <ProductsDetails></ProductsDetails>,
-                loader: ({ params }) => fetch(`http://localhost:5000/productsDetails/${params.id}`)
+                loader: ({ params }) => fetch(`https://mobile-server-site.vercel.app/productsDetails/${params.id}`)
             },
             {
                 path: '/blog',
@@ -55,12 +55,12 @@ const router = createBrowserRouter([
             {
                 path: '/addProducts/:products',
                 element: <AllProductDetails></AllProductDetails>,
-                loader: ({ params }) => fetch(`http://localhost:5000/addProducts/${params.products}`)
+                loader: ({ params }) => fetch(`https://mobile-server-site.vercel.app/addProducts/${params.products}`)
             },
             {
                 path: '/mobileCasing',
-                element: <MobileCasing></MobileCasing> 
-                // loader: ({ params }) => fetch(`http://localhost:5000/booking/${params.id}`)
+                element: <MobileCasing></MobileCasing>
+                // loader: ({ params }) => fetch(`https://mobile-server-site.vercel.app/booking/${params.id}`)
             }
 
         ]
@@ -90,9 +90,9 @@ const router = createBrowserRouter([
             {
                 path: '/dashboard/payment/:id',
                 element: <Payment></Payment>,
-                loader: ({ params }) => fetch(`http://localhost:5000/booking/${params.id}`)
+                loader: ({ params }) => fetch(`https://mobile-server-site.vercel.app/booking/${params.id}`)
             },
-           
+
         ]
     }
 
